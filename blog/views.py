@@ -16,8 +16,8 @@ posts_dictionary = {
 
 def index(request):
     # list_items = ""  # All the list items of the HTML unordered list will be stored in this variable.
-    # list_of_slugs = list(
-    #     posts_dictionary.keys()
+    list_of_slugs = list(
+        posts_dictionary.keys())
     # )  # Getting the list of slugs from the dictionary keys.
 
     # for slug in list_of_slugs:
@@ -31,7 +31,11 @@ def index(request):
     # </ul>
     # """
     # return HttpResponse(response_data)
-    pass
+    index_context = {
+        "slugs": list_of_slugs,
+        "posts_dictionary": posts_dictionary,
+    }
+    return render(request, "blog/index.html")
 
 
 def post_detail(request, slug):

@@ -1,7 +1,7 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 # Handling the homepage URL:
 def homepage(request):
     # return HttpResponse("You're at the homepage.")
-    pass
+    return render(request, "blog/homepage.html")

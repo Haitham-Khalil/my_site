@@ -55,7 +55,8 @@ ROOT_URLCONF = 'my_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR / 'templates'], # Now templates inside the 'templates' folder in the project root will be recognized by Django.
+                 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,3 +117,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static'] # Now static files inside the 'static' folder in the project root will be recognized by Django.
