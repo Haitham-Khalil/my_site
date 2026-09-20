@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+  Mountain Hiking
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/post-detail.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <section id="summary">
+    <h2>Mountain Hiking</h2>
+    <article>
+      <img src="{% static "blog/images/mountains.jpg" %}" alt="Mountain Hiking" />
+      <address>Haitham</address>
+      <time>September 20, 2026</time>
+    </article>
+  </section>
+
+  <main>
+    <p>
+      There is nothing like the views you get when hiking in the mountains! And
+      I wasn't even prepared for what happened whilst I was enjoying the view!
+    </p>
+  </main>
+{% endblock %}

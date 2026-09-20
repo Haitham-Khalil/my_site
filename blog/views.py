@@ -40,4 +40,4 @@ def index(request):
 
 def post_detail(request, slug):
     # return HttpResponse(f"Hello, world. You're at the blog post with slug: {slug}")
-    pass
+    return render(request, "blog/post-detail.html")

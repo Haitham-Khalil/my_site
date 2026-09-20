@@ -18,11 +18,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from . import views
-
-# Defining URLs that start with localhost:8000, URLs that start with different paths, representing different apps we might have in our project.
+# Only the admin URL is defined at the project level. Every other request is
+# forwarded directly to the app-level URLConf (blog/urls.py) with an empty
+# prefix, so all other URLs are handled in one single place.
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.homepage, name="homepage"),
-    path("posts/", include("blog.urls")),
+    path("", include("blog.urls")),
 ]
