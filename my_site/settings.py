@@ -121,3 +121,5 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]  # Now static files inside the 'static' folder in the project root will be recognized by Django.
+MEDIA_ROOT = BASE_DIR / "uploads"  # This is the folder where uploaded files will be stored.
+MEDIA_URL = "/files/"  # This is the URL that will be used to access the uploaded files.
