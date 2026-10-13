@@ -1,9 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Stored Posts
-    {% endblock %}
-    
+{% endblock %}
+
+{% block css_files%}
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/stored-posts.css' %}">
+{% endblock %}
 {% block content %}
     <section>
         {% if not has_posts %}
