@@ -58,13 +58,25 @@ class AllPostsView(ListView):
 
 
 class SinglePostView(View):
+
+    def is_stored_post(self, request, post_id):
+        stored_posts = request.session.get("stored_posts")
+        is_saved_for_later = False
+        if stored_posts is not None:
+            is_saved_for_later = post_id in stored_posts
+        else:
+            is_saved_for_later = False
+        return is_saved_for_later
+
     def get(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
+        
         context = {
             "post": post,
             "post_tags": post.tags.all(),
             "comment_form": CommentForm(),
             "comments": post.comments.all().order_by("-id"),
+            "saved_for_later": self.is_stored_post(request, post.id)
         }
         return render(request, "blog/post-detail.html", context)
 
@@ -81,7 +93,8 @@ class SinglePostView(View):
             "post": post,
             "post_tags": post.tags.all(),
             "comment_form": comment_form,
-            "comments": post.comments.all().order_by("-id")
+            "comments": post.comments.all().order_by("-id"),
+            "saved_for_later": self.is_stored_post(request, post.id)
         }
         return render(request, "blog/post-detail.html", context)
 
